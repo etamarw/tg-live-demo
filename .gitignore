@@ -1,0 +1,84 @@
+# Terraform
+*.tfstate
+*.tfstate.*
+*.tfvars
+*.tfplan
+*.tfplan.*
+!terraform.tfvars.example
+
+# Terragrunt
+.terragrunt-cache/
+*.hcl.backup
+
+# Local environment files
+.env
+.env.local
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# SSH keys and certificates
+*.pem
+*.key
+*.cert
+*.crt
+!*.pub
+
+# Backup files
+*.backup
+*.bak
+
+# Temporary files
+*.tmp
+*.temp
+
+# Output of 'npm pack'
+*.tgz
+
+# Dependency directories
+node_modules/
+
+# Optional npm cache directory
+.npm
+
+# dotenv environment variables file
+.env
+
+# Terraform plugin cache
+.terraform.d/
+
+# Local state
+terraform.tfstate
+terraform.tfstate.backup
+
+# State override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Plan files
+*.tfplan
+*.tfplan.*

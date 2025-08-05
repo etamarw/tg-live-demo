@@ -1,0 +1,67 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    ":dependencyDashboard"
+  ],
+  "enabledManagers": [
+    "terragrunt",
+    "terraform"
+  ],
+  "terragrunt": {
+    "fileMatch": [
+      "live/.+\\.hcl$"
+    ]
+  },
+  "terraform": {
+    "ignorePaths": [
+      "**/test/**"
+    ]
+  },
+  "packageRules": [
+    {
+      "description": "Monitor tg-modules-demo repository for new releases",
+      "matchDatasources": ["github-releases", "git-refs"],
+      "matchPackagePatterns": ["etamarw/tg-modules-demo"],
+      "automerge": false,
+      "reviewersFromCodeOwners": true,
+      "labels": ["dependencies", "modules", "renovate"]
+    },
+    {
+      "description": "Group all module updates together",
+      "matchPackagePatterns": ["etamarw/tg-modules-demo"],
+      "groupName": "tg-modules-demo",
+      "commitMessagePrefix": "chore(modules):",
+      "commitMessageAction": "update",
+      "commitMessageTopic": "modules",
+      "commitMessageExtra": "to {{newVersion}}"
+    },
+    {
+      "description": "Terraform provider updates",
+      "matchManagers": ["terraform"],
+      "matchDepTypes": ["provider"],
+      "rangeStrategy": "bump",
+      "labels": ["dependencies", "terraform-providers"]
+    }
+  ],
+  "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
+  "prHourlyLimit": 5,
+  "prConcurrentLimit": 10,
+  "separateMinorPatch": true,
+  "separateMajorMinor": true,
+  "schedule": [
+    "before 9am on monday"
+  ],
+  "labels": [
+    "dependencies",
+    "renovate"
+  ],
+  "assignees": ["etamarw"],
+  "reviewers": ["etamarw"],
+  "branchPrefix": "renovate/",
+  "baseBranches": ["master"],
+  "platformAutomerge": false,
+  "dependencyDashboard": true,
+  "dependencyDashboardTitle": "🤖 Renovate Dependency Dashboard",
+  "rebaseWhen": "conflicted"
+}
