@@ -5,7 +5,7 @@ include "root" {
 
 # Reference the VPC module from the modules repository
 terraform {
-  source = "git::https://github.com/etamarw/tg-modules-demo.git//modules/vpc?ref=v1.0.0"
+  source = "git::https://github.com/etamarw/tg-modules-demo.git//modules/vpc?ref=v1.0.1"
 }
 
 # Specify the inputs for the VPC module
