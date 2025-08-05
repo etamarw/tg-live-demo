@@ -5,7 +5,7 @@ include "root" {
 
 # Reference the security-groups module from the modules repository
 terraform {
-  source = "git::https://github.com/etamarw/tg-modules-demo.git//modules/security-groups?ref=v1.0.0"
+  source = "git::https://github.com/etamarw/tg-modules-demo.git//modules/security-groups?ref=v1.0.1"
 }
 
 # Create explicit dependency on VPC
