@@ -1,7 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base",
+    "config:recommended",
     ":dependencyDashboard"
   ],
   "enabledManagers": [
@@ -9,8 +9,8 @@
     "terraform"
   ],
   "terragrunt": {
-    "fileMatch": [
-      "live/.+\\.hcl$"
+    "managerFilePatterns": [
+      "/live/.+\\.hcl$/"
     ]
   },
   "terraform": {
@@ -21,27 +21,45 @@
   "packageRules": [
     {
       "description": "Monitor tg-modules-demo repository for new releases",
-      "matchDatasources": ["github-releases", "git-refs"],
-      "matchPackagePatterns": ["etamarw/tg-modules-demo"],
+      "matchDatasources": [
+        "github-releases",
+        "git-refs"
+      ],
       "automerge": false,
       "reviewersFromCodeOwners": true,
-      "labels": ["dependencies", "modules", "renovate"]
+      "labels": [
+        "dependencies",
+        "modules",
+        "renovate"
+      ],
+      "matchPackageNames": [
+        "/etamarw/tg-modules-demo/"
+      ]
     },
     {
       "description": "Group all module updates together",
-      "matchPackagePatterns": ["etamarw/tg-modules-demo"],
       "groupName": "tg-modules-demo",
       "commitMessagePrefix": "chore(modules):",
       "commitMessageAction": "update",
       "commitMessageTopic": "modules",
-      "commitMessageExtra": "to {{newVersion}}"
+      "commitMessageExtra": "to {{newVersion}}",
+      "matchPackageNames": [
+        "/etamarw/tg-modules-demo/"
+      ]
     },
     {
       "description": "Terraform provider updates",
-      "matchManagers": ["terraform"],
-      "matchDepTypes": ["provider"],
+      "matchManagers": [
+        "terraform"
+      ],
+      "matchDepTypes": [
+        "provider"
+      ],
       "rangeStrategy": "bump",
-      "labels": ["dependencies", "terraform-providers"]
+      "labels": [
+        "dependencies",
+        "terraform-providers"
+      ]
     }
   ],
   "gitAuthor": "Renovate Bot <bot@renovateapp.com>",
@@ -56,10 +74,16 @@
     "dependencies",
     "renovate"
   ],
-  "assignees": ["etamarw"],
-  "reviewers": ["etamarw"],
+  "assignees": [
+    "etamarw"
+  ],
+  "reviewers": [
+    "etamarw"
+  ],
   "branchPrefix": "renovate/",
-  "baseBranches": ["master"],
+  "baseBranchPatterns": [
+    "master"
+  ],
   "platformAutomerge": false,
   "dependencyDashboard": true,
   "dependencyDashboardTitle": "🤖 Renovate Dependency Dashboard",
